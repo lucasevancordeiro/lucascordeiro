@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas Cordeiro</title>
+<meta name="description" content="DSA portfolio of Lucas Cordeiro — Primary 6, aged 12. Science, coding, writing.">
+<meta name="author" content="Lucas Cordeiro">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f3;
+    --bg-alt: #f2efe7;
+    --ink: #161616;
+    --ink-soft: #4a4a4a;
+    --ink-mute: #767670;
+    --accent: #2c5f7c;
+    --accent-warm: #c25e3a;
+    --line: #d8d4c8;
+    --max: 1100px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  p + p { margin-top: 1em; }
+
+  /* Nav */
+  nav.top {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(250, 248, 243, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    z-index: 100;
+  }
+  nav.top .inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  nav.top .name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  nav.top ul {
+    display: flex;
+    list-style: none;
+    gap: 28px;
+  }
+  nav.top a {
+    color: var(--ink-soft);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  nav.top a:hover { color: var(--ink); text-decoration: none; }
+
+  /* Sections */
+  section {
+    padding: 120px 32px;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  section.hero {
+    padding-top: 180px;
+    padding-bottom: 140px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 400;
+    max-width: 22ch;
+    margin-bottom: 28px;
+  }
+  .hero .meta {
+    color: var(--ink-soft);
+    font-size: 17px;
+    margin-bottom: 48px;
+  }
+  .cta {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .cta:hover {
+    background: var(--accent);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+  .hero-image {
+    margin-top: 56px;
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 1 / 1;
+    background: var(--bg-alt);
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-mute);
+    font-size: 14px;
+    overflow: hidden;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  h2.section-title {
+    font-size: clamp(28px, 4vw, 40px);
+    margin-bottom: 48px;
+    max-width: 24ch;
+  }
+  .lede {
+    font-size: 21px;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 60ch;
+  }
+  .body {
+    max-width: 62ch;
+    color: var(--ink-soft);
+  }
+  .body p { font-size: 17px; }
+
+  /* Project cards */
+  .project {
+    border-top: 1px solid var(--line);
+    padding-top: 48px;
+    margin-top: 48px;
+  }
+  .embed-wrap {
+    margin-top: 32px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-alt);
+  }
+  .embed-wrap iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+  }
+  .embed-wrap.scratch iframe { height: 402px; }
+  .embed-wrap.spotify iframe { height: 232px; }
+  .embed-wrap.video {
+    aspect-ratio: 16 / 9;
+    position: relative;
+  }
+  .embed-wrap.video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .embed-caption {
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-top: 10px;
+    font-style: italic;
+  }
+  .bot-photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .bot-photos img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    display: block;
+  }
+  .project:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .project .tag {
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+  .project h3 {
+    font-size: clamp(24px, 3vw, 32px);
+    margin-bottom: 24px;
+  }
+  .project .lede { margin-bottom: 32px; }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 32px;
+    margin-top: 32px;
+  }
+  .process-grid h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .process-grid p {
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+  .project-cta {
+    margin-top: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .project-cta::after {
+    content: '→';
+    transition: transform 0.15s ease;
+  }
+  .project-cta:hover::after { transform: translateX(3px); }
+
+  /* Writing */
+  .writing-feature {
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 48px;
+    margin-bottom: 32px;
+  }
+  .writing-feature h3 {
+    font-size: clamp(22px, 2.6vw, 28px);
+    margin-bottom: 20px;
+  }
+  .writing-feature p { color: var(--ink-soft); }
+  .writing-feature .placeholder {
+    background: rgba(194, 94, 58, 0.08);
+    border-left: 3px solid var(--accent-warm);
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 16px 0;
+    font-size: 15px;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  /* Inline scientific claim footnotes */
+  .claim {
+    background: none;
+    border: none;
+    padding: 0 1px;
+    font: inherit;
+    color: var(--ink);
+    border-bottom: 1px dotted var(--accent);
+    cursor: pointer;
+    text-align: left;
+    display: inline;
+    line-height: inherit;
+  }
+  .claim:hover {
+    background: rgba(44, 95, 124, 0.08);
+  }
+  .claim sup {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 11px;
+    margin-left: 2px;
+  }
+  .notes-stack {
+    margin-top: 16px;
+  }
+  .note {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    background: rgba(44, 95, 124, 0.06);
+    border-left: 0 solid var(--accent);
+    padding: 0 18px;
+    border-radius: 4px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-bottom: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.3s ease, margin-bottom 0.3s ease, border-left-width 0.3s ease;
+  }
+  .note.open {
+    max-height: 400px;
+    opacity: 1;
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    border-left-width: 3px;
+  }
+  .note-num {
+    color: var(--accent);
+    font-weight: 600;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .note p {
+    font-size: 15px !important;
+    color: var(--ink) !important;
+    line-height: 1.6;
+    margin: 0 !important;
+  }
+  .footnote-prompt {
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  .read-toggle {
+    margin-top: 20px;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .read-toggle:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+  }
+  .read-toggle::after {
+    content: ' →';
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  .read-toggle.open::after {
+    transform: rotate(90deg);
+  }
+  .story-body {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.6s ease, opacity 0.4s ease, margin-top 0.4s ease;
+    margin-top: 0;
+  }
+  .story-body.open {
+    max-height: 6000px;
+    opacity: 1;
+    margin-top: 32px;
+  }
+  .story-body {
+    border-top: 1px solid var(--line);
+    padding-top: 0;
+  }
+  .story-body.open {
+    padding-top: 32px;
+  }
+  .story-body .entry {
+    margin-bottom: 28px;
+  }
+  .story-body .entry-date {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+  }
+  .story-body .entry p {
+    margin-bottom: 12px;
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .story-body .signoff {
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-top: 12px;
+  }
+  .story-body .footnote {
+    font-size: 13px;
+    color: var(--ink-mute);
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    margin-top: 24px;
+  }
+  .writing-list {
+    list-style: none;
+  }
+  .writing-list li {
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 16px;
+  }
+  .writing-list li:first-child { border-top: none; }
+  .writing-list strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* Snapshot */
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 48px 56px;
+  }
+  .snap-group h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .snap-item {
+    margin-bottom: 24px;
+  }
+  .snap-item .name {
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .snap-item .detail {
+    color: var(--ink-mute);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .snap-item .quote {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.55;
+    border-left: 2px solid var(--line);
+    padding-left: 12px;
+    margin-top: 8px;
+  }
+  .snap-item.highlight .name {
+    color: var(--accent-warm);
+    font-weight: 600;
+  }
+  .snap-item.highlight .name::before {
+    content: '★ ';
+    color: var(--accent-warm);
+  }
+
+  /* What's next */
+  .next-section {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 120px 32px;
+    margin-top: 80px;
+  }
+  .next-section .inner {
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .next-section h2 {
+    color: var(--bg);
+    font-size: clamp(28px, 4vw, 40px);
+    margin-bottom: 32px;
+  }
+  .next-section p {
+    color: rgba(250, 248, 243, 0.85);
+    font-size: 19px;
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+  .next-section p + p { margin-top: 1.5em; }
+  .next-section .placeholder-tag {
+    display: inline-block;
+    background: rgba(194, 94, 58, 0.18);
+    color: var(--accent-warm);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+
+  footer {
+    padding: 40px 32px;
+    text-align: center;
+    color: var(--ink-mute);
+    font-size: 13px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    section { padding: 80px 24px; }
+    section.hero { padding-top: 140px; padding-bottom: 80px; }
+    nav.top .inner { padding: 12px 20px; }
+    nav.top ul { gap: 18px; }
+    nav.top a { font-size: 13px; }
+    .writing-feature { padding: 28px 24px; }
+    .next-section { padding: 80px 24px; }
+  }
+  @media (max-width: 520px) {
+    nav.top .name { font-size: 15px; }
+    nav.top ul { gap: 14px; }
+    nav.top a { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="inner">
+    <div class="name">Lucas Cordeiro</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#snapshot">Snapshot</a></li>
+      <li><a href="#next">What's next</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">DSA portfolio · 2026</div>
+  <h1>Curious by default.</h1>
+  <div class="meta">Lucas Cordeiro · Primary 6 · Aged 12</div>
+  <a href="#projects" class="cta">See the projects</a>
+  <div class="hero-image">
+    <img src="hero-lucas.jpg" alt="Lucas Cordeiro at Kali Majapahit Martial Arts">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="eyebrow">About</div>
+  <h2 class="section-title">A little about me</h2>
+  <div class="body">
+    <p class="lede">I have always been curious about things that sometimes people overlook. Why Singapore has more animal species than people realise. What it feels like to eat a bug. How a bamboo shoot experiences the seasons. I find these questions hard to stop thinking about.</p>
+    <p>My favourite podcasts are <em>Wow in the World</em> and <em>Boring History for Sleep</em>. One made me realise that science is full of things that sound impossible but aren't. The other taught me that even boring things have a story worth telling, if you look hard enough. At some point, I started making my own. It's called <em>Singapore Science Stories</em> on Spotify. I research the topics myself, and find a way to explain them so that other people find them as interesting as I do.</p>
+    <p>Most of what I build or write comes from the same place. I notice something that's hard to understand, and I want to fix that. Not because it's a school project, but for my own interest.</p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="eyebrow">Projects</div>
+  <h2 class="section-title">Things I built and what went into them.</h2>
+
+  <article class="project">
+    <div class="tag">Game · Built on Scratch · International Coding Showcase, Silver · 2025</div>
+    <h3>Climate Crusaders</h3>
+    <p class="lede">A game that teaches players how different environmental problems need different scientific solutions. You pick the right solution for each climate issue and learn how Singapore handles it in real life. I built it on Scratch. Original concept. It's a topic close to my heart, as a young person who will inherit this earth.</p>
+
+    <div class="process-grid">
+      <div>
+        <h4>The plan</h4>
+        <p>Map every climate issue I wanted to cover to a real Singapore response. Build the game loop first, then the levels, then the visuals. Original code, and I created the art.</p>
+      </div>
+      <div>
+        <h4>What worked</h4>
+        <p>The core mechanic. Picking solutions and learning the reason behind each one made the game feel like a quiz that taught you something instead of testing you. When I got my friends to play, they remembered the science afterwards. That was the point.</p>
+      </div>
+      <div>
+        <h4>What failed</h4>
+        <p>The animations broke first. Sprites jittered when characters moved between zones. Movement felt sluggish even when the logic was right.</p>
+      </div>
+      <div>
+        <h4>How I fixed it</h4>
+        <p>I stripped each animation back to the simplest version that still read clearly, then layered detail on top. I rebuilt the movement system so motion stayed consistent across screens. Many rounds of trial and error.</p>
+      </div>
+      <div>
+        <h4>What I learnt</h4>
+        <p>Hours of debugging are part of the work. I learnt that the first idea is rarely the right one. And patience is a skill.</p>
+      </div>
+    </div>
+
+    <div class="embed-wrap video">
+      <iframe src="https://drive.google.com/file/d/1ICU-GVpwHil9CUtsrOP1dpgZPeP6EEOT/preview" allow="autoplay" allowfullscreen></iframe>
+    </div>
+    <p class="embed-caption">A short walkthrough I recorded explaining how the game works.</p>
+
+    <a class="project-cta" href="https://scratch.mit.edu/projects/1256938814/" target="_blank" rel="noopener">Open Climate Crusaders on Scratch</a>
+  </article>
+
+  <article class="project">
+    <div class="tag">Science podcast · Creator and host · Spotify · 2025–present</div>
+    <h3>Singapore Science Stories</h3>
+    <p class="lede">I'm a huge fan of podcasts so I created this to explore science in Singapore in a way that other kids might enjoy listening to. I work on it independently: research the topic, write the scripts, record and edit the episodes on GarageBand. My parents then help me upload it onto Spotify. The series explores topics such as coral reef conservation, disappearing fireflies, edible insects, and environmental technology.</p>
+
+    <div class="process-grid">
+      <div>
+        <h4>What worked</h4>
+        <p>Researching each episode taught me that good science communication is not just about sharing facts. The episodes became stronger when I focused on questions that connected science to everyday life in Singapore.</p>
+      </div>
+      <div>
+        <h4>What failed</h4>
+        <p>Sometimes the mic quality was inconsistent, with certain parts being softer or louder than others, and balancing background music with speaking audio was challenging.</p>
+      </div>
+      <div>
+        <h4>How I fixed it</h4>
+        <p>I asked my dad for help with GarageBand editing. I learnt how to improve audio quality by adjusting volume levels, and balancing music so that it supports the narration without overpowering it. This helped make the episodes more enjoyable to listen to.</p>
+      </div>
+      <div>
+        <h4>Favourite moment</h4>
+        <p>The episode with my grandmother as my guest. That was the first episode that wasn't scripted. We ate edible bugs together. She vehemently hated it, then admitted it was tasty. Her reaction made the episode funny and memorable, and it showed me how science discussions can become more engaging when shared with other people.</p>
+      </div>
+    </div>
+
+    <div class="embed-wrap spotify">
+      <iframe src="https://open.spotify.com/embed/episode/4BuWmVzyBKsxb7d20BZbEr?utm_source=generator" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </div>
+    <p class="embed-caption">Press play. The episode where my grandmother tries an edible bug.</p>
+
+    <a class="project-cta" href="https://open.spotify.com/episode/4BuWmVzyBKsxb7d20BZbEr" target="_blank" rel="noopener">Open on Spotify</a>
+  </article>
+
+  <article class="project">
+    <div class="tag">Robotics · LEGO Mindstorms · Personal project · 2026 · Prototype</div>
+    <h3>Stair-climbing bot</h3>
+    <p class="lede">I'm building a robot that can carry things up the stairs at home. I got the idea off a chair that can carry people up the stairs. Notably, they are expensive and have to be drilled into walls. So, I wanted to make a smaller version that is more accessible and useful for daily housework tasks, like helping my grandparents carry items onto the second floor.</p>
+
+    <div class="process-grid">
+      <div>
+        <h4>The plan</h4>
+        <p>A bot that uses arms to lift itself up. Carries weight on its top. Battery-powered. Programmed in LEGO Mindstorms.</p>
+      </div>
+      <div>
+        <h4>What works</h4>
+        <p>The lifting motion and the motor control. The top can hold a small bag. On a low ledge, the climb sequence runs end to end.</p>
+      </div>
+      <div>
+        <h4>What failed</h4>
+        <p>At first, it kept toppling over. The balance wasn't right.</p>
+      </div>
+      <div>
+        <h4>How I fixed it</h4>
+        <p>I reinforced its legs while keeping it nimble. <em>[BLANK — Daphne/Lucas: what else you tried for balance]</em>. After version 2, the next issue was that the LEGO Mindstorms gears are too small. When I tested it at home, I realised a normal step is too tall. The bot is hitting its maximum obstacle-crossing height.</p>
+      </div>
+      <div>
+        <h4>What I learnt</h4>
+        <p><em>[BLANK — Daphne/Lucas: main learning]</em>. Continuing to iterate matters. Testing at every stage matters more. I researched options — one fix is to install a ramp at home (grandparents may say no). The other is to increase the bot's own approach angle.</p>
+      </div>
+    </div>
+
+    <div class="bot-photos">
+      <img src="bot-v1.jpg" alt="Stair-climbing bot, version 1 — LEGO Mindstorms EV3 build with gear assembly">
+      <img src="bot-v2.jpg" alt="Stair-climbing bot, version 2 — refined LEGO Mindstorms EV3 build">
+    </div>
+    <p class="embed-caption">Version 1 (left) and version 2 (right). The redesign reinforced the legs without losing nimbleness.</p>
+  </article>
+
+  <article class="project">
+    <div class="tag">Web app · AI-assisted build · Personal project · 2025–2026 · Built on Base44</div>
+    <h3>The Little Newsroom</h3>
+    <p class="lede">I found it hard to use real news sites when I needed to prepare for Oral exams. I wanted to find out what's going on in the world, but there was no specific section on The Straits Times' site catered to students, and not everything on their homepage was suitable. I designed a web app that pulls real news from five live news sources, filtered for kids my age. I designed the idea, picked the sources, decided what to filter out, then figured out how the page would work. I used Base44 to write the code.</p>
+
+    <div class="process-grid">
+      <div>
+        <h4>The plan</h4>
+        <p>News had to be real, from real sources and not made up. Articles had to be suitable for kids around twelve, no graphic crime, no adult finance. Singapore news as well as world news. Cool science news. Articles would link back to its source.</p>
+      </div>
+      <div>
+        <h4>What worked</h4>
+        <p>Five RSS feeds (BBC Newsround, BBC World, CNA, NASA, Science Daily) gave enough stories. rss2json.com fixed a browser problem called CORS that was blocking the feeds. A two-layer filter caught different inappropriate content: keywords dropped stories like COE news, an AI classifier removed things like distressing world events.</p>
+      </div>
+      <div>
+        <h4>What failed</h4>
+        <p>The first version looked like it worked, but actually AI had invented sample articles to make the site look full. After I deleted them, they kept showing because Base44 had hardcoded them into the homepage.</p>
+      </div>
+      <div>
+        <h4>How I fixed it</h4>
+        <p>I traced the fake articles to the database and the homepage code. I switched to rss2json.com for the CORS problem. Base44's free plan blocks scheduled fetching, so I built a manual "Fetch Now" button and a "Last refreshed" timestamp.</p>
+      </div>
+      <div>
+        <h4>What I learnt about working with AI</h4>
+        <p>Working with AI is its own kind of skill. You have to know what to ask, what to remove, and when to step back and decide for yourself. AI will make things up, which I learnt to verify across more than one AI tool. Catching the AI mistakes — invented articles, hardcoded samples, silent filtering — felt like engineering.</p>
+      </div>
+    </div>
+
+    <p class="embed-caption">A live web app filtered for kids aged 7–12.</p>
+
+    <a class="project-cta" href="https://news-kids-sg-v1.base44.app" target="_blank" rel="noopener">Open The Little Newsroom</a>
+  </article>
+</section>
+
+<!-- WRITING -->
+<section id="writing">
+  <div class="eyebrow">Writing</div>
+  <h2 class="section-title">Stories where the science had to be right.</h2>
+
+  <div class="writing-feature">
+    <h3>Diary of a Bamboo Shoot</h3>
+    <p>Before I started writing, I read about different plants and worked out which one would carry the story I wanted to tell.</p>
+    <p>Everything in the story is scientifically accurate. <button class="claim" data-note="n1">Bamboo grows fast — some species put on visible growth within a day<sup>1</sup></button>, which is why Xiao Jie sprouts later but is taller than Xiao Li. <button class="claim" data-note="n2">Mature bamboo is famous for bending in storms instead of breaking<sup>2</sup></button>, which is the lesson Xiao Li learns the night Xiao Jie snaps. <button class="claim" data-note="n3">The dates follow the lunar calendar in the right order: new moon, half moon, waxing gibbous, full moon<sup>3</sup></button>. The riddle Lao Zhu asks is <button class="claim" data-note="n4">the Riddle of the Sphinx from Greek mythology<sup>4</sup></button>, and the answer — a human — is correct because of how humans move at different stages of life: crawling, walking, then with a stick.</p>
+    <p class="footnote-prompt">Tap any underlined claim to see the science behind it.</p>
+
+    <div class="notes-stack">
+      <div class="note" id="n1">
+        <span class="note-num">1</span>
+        <p>Some bamboo species — like <em>Phyllostachys edulis</em>, the moso bamboo — can put on up to ~91 cm of growth in a single day. The speed comes from cells dividing within already-formed internodes, not from new tissue building up slowly the way trees grow rings.</p>
+      </div>
+      <div class="note" id="n2">
+        <span class="note-num">2</span>
+        <p>Bamboo is hollow with fibrous bundles running its length. Silica in the cell walls and the hollow culm let it bend low under wind loads and spring back. Solid-trunked trees can't flex the same way, which is why they snap in the storms bamboo survives.</p>
+      </div>
+      <div class="note" id="n3">
+        <span class="note-num">3</span>
+        <p>The lunar cycle takes about 29.5 days. The moon's appearance moves through new → waxing crescent → first quarter (half) → waxing gibbous → full → waning gibbous → third quarter → waning crescent. The diary's chosen entries follow that order from new through full correctly.</p>
+      </div>
+      <div class="note" id="n4">
+        <span class="note-num">4</span>
+        <p>From Sophocles's <em>Oedipus Rex</em>, around 5th century BCE. The Sphinx of Thebes posed the riddle to travellers; failure meant death. Oedipus's answer — a human, who crawls as an infant, walks as an adult, and uses a cane in old age — caused the Sphinx to destroy itself.</p>
+      </div>
+    </div>
+
+    <button class="read-toggle" data-target="bamboo-story" aria-expanded="false">Read it now</button>
+
+    <div class="story-body" id="bamboo-story">
+      <div class="entry">
+        <div class="entry-date">The day of the first new moon of the year</div>
+        <p>Dear Diary,</p>
+        <p>Hello! I am Xiao Li. I live in China and my favourite hobby is talking to the oldest bamboo plant in the grove, Lao Zhu — which translates to Old Stem. He stood tall at the edge of the grove, its stem still thick and strong despite withstanding countless seasons. Everyone looked up to him for his wisdom and wits.</p>
+        <p>Today, he gave me a riddle and even though I solved all of his other riddles, I can't solve this one. You can help me solve it, can't you? What walks on four legs in the morning, two legs in the afternoon and three legs in the evening? I can't seem to solve it because I don't know which animal has three legs! At least, I think it is an animal because all the animals I've seen have legs! If you have any ideas, maybe you can write back?…somehow.</p>
+        <p class="signoff">Your new friend,<br>Xiao Li</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">The day of the first half moon of the year</div>
+        <p>Dear Diary,</p>
+        <p>Today, I had the most splendiferous day. A group of giants with two legs came and watered me and all the other plants! I wonder why they had come. They also gave water to Xiao Jie, which only sprouted up about a week ago. Despite that, he is much taller than me. Every time I see him, I feel so ashamed because even though bamboo grows very fast, I'm still very much shorter than him. Why is the world so unfair? And I haven't even started on the name calling! He calls me names like Little Weed, Weak Stem, and even says that I am a waste of space, sunlight and water! How infuriating! Well anyway, dear Diary, Xiao Jie aside, today was awesome. Good night!</p>
+        <p class="signoff">Your friend,<br>Xiao Li</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">The day of the first waxing gibbous of the year</div>
+        <p>Dear Diary,</p>
+        <p>I have been trying to grow taller, but nothing much has changed. I went to Lao Zhu for advice, but he just chuckled and told me that taller does not mean better, and better doesn't mean taller. When I asked him what was better, he said, "Even the tallest plant snaps under weight!" Always speaking in riddles, Lao Zhu! I've been thinking, though, maybe my stem is a bit strained, and that Xiao Jie's stem is under a lot of strain too, so maybe it is for the better that I am so short. Tall trees sway so crazily in the wind it scares me.</p>
+        <p class="signoff">Your blissfully short friend,<br>Xiao Li</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">The day of the first full moon of the year</div>
+        <p>Dear Diary,</p>
+        <p>Today was the scariest day of my life. I was photosynthesising as normal when something hit. I can still vividly remember the deafening sound of thunder and the pale colour of the streaks of lightning. The wind seemed to whistle an ominous song in my roots as the raindrops darted down in a relentless torrent. I must've turned as white as a panda's fur. Some of my leaves snapped off as I struggled to stand straight when I heard a soft, gentle voice. "Relax, don't fight it," it said. Deciding I had nothing to lose, I obeyed. As I let the wind rush on me, I slowly bent backwards.</p>
+        <p>I was one of the lucky ones though. Xiao Jie — he snapped in half. His stem must have been under unbearable strain. The last thing I remember was Xiao Jie fighting the forces of the wind and struggling to stand as tall as he could until his stem just snapped. I am still recovering from the shock. Six other plants suffered the same fate. Their funeral is tomorrow. I know now: bending is better than breaking. Those who fight against our mother — Mother Nature — shall be punished. That is her rule.</p>
+        <p class="signoff">Your mercifully lucky friend,<br>Xiao Li</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">The day of the fifth full moon of the year</div>
+        <p>Dear Diary,</p>
+        <p>It feels like forever since I last talked to you. Lao Zhu is still alive and talking in riddles. The giants are still coming. My only explanation is that there is now a drought and they are taking care of us.</p>
+        <p>Oh! Also, I am no longer the shortest shoot in the grove. Two days ago, a tiny shoot sprouted and we all call him Xiao Xing Cun, Little Survivor. A few days ago, I was poring over my old entries and found that riddle. Remember? What walks on four legs in the morning, two legs in the afternoon and three legs in the evening? That one. When I showed it to Lao Zhu, he told me the answer: a human! You may be confused, like I was, so I dug a little deeper and realised that those giants that gave us water were humans! Why? Well, at the start of their lives, they crawl on all fours. When they grow up, they learn to walk on two legs, and when they are old, they use something called a walking stick. Well, that is the third leg.</p>
+        <p>Lao Zhu then gave me something else to think about. He said that life is a circle. And now, looking back on the last — well, I can't remember how long, I realise how true it is. Just as I once looked up to others, now Xiao Xing Cun looks up to me.</p>
+        <p class="signoff">Your much taller friend,<br>Xiao Li</p>
+      </div>
+
+      <div class="footnote">A waxing gibbous is the cycle after the half moon, but before the full moon.</div>
+    </div>
+  </div>
+
+  <div class="writing-feature">
+    <h3>PSLE 2225: Snippets of the Future</h3>
+    <p>Contributor, Singapore Writers' Festival 2025. A short piece imagining what Singapore's most stressful exam looks like two centuries from now.</p>
+
+    <button class="read-toggle" data-target="psle-story" aria-expanded="false">Read it now</button>
+
+    <div class="story-body" id="psle-story">
+      <div class="entry">
+        <p>By 2225, PSLE is gone — replaced by the Planetary Survival Leadership Exam, where 12-year-olds lead teams through simulated crises: asteroid strikes, rising sea levels, or bubble tea shortage.</p>
+        <p>Morning assembly still happens under the Singapore sun (because tradition), though climate domes keep out the 45°C heat while rotating through four seasons for "training". Students attend the Living Campus, a sentient school where classrooms morph into holographic kampongs, galaxies or labs, while animals roam free as student companions.</p>
+        <p>Uniforms remain (because heritage!), now self-cleaning and biometric. In the canteen, chicken wings still sell out first, even with mind-preorders. Some things never change.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-size: 13px; font-family: 'Inter', sans-serif; font-weight: 600; margin-bottom: 16px; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.08em;">Other writing</h3>
+  <ul class="writing-list">
+    <li><strong>Creative Writing Programme</strong> — shortlisted, May 2025</li>
+    <li><strong>Queen's Commonwealth Essay Competition</strong> — participant</li>
+  </ul>
+</section>
+
+<!-- SNAPSHOT -->
+<section id="snapshot">
+  <div class="eyebrow">Snapshot</div>
+  <h2 class="section-title">The full picture.</h2>
+
+  <div class="snapshot-grid">
+
+    <div class="snap-group">
+      <h3>Leadership &amp; character</h3>
+      <div class="snap-item">
+        <div class="name">Choir</div>
+        <div class="detail">2022–2026, including Papal Mass 2024</div>
+        <div class="quote">I joined when it was a small morning gathering. I encouraged my friends to join and asked the principal to come to a rehearsal. I watched it grow into a full CCA.</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">Montfortian Adventure Retreat</div>
+        <div class="detail">Youths In Action · November 2025</div>
+        <div class="quote">I learnt what it truly meant to be a leader — to lead yourself before you lead others.</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">Kali Majapahit</div>
+        <div class="detail">Senior red belt · Since kindergarten · Now guides younger peers informally</div>
+        <div class="quote">I figured out how to channel my energy into what required my energy most.</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">ICT Monitor</div>
+        <div class="detail">Primary 1 to Primary 6</div>
+      </div>
+    </div>
+
+    <div class="snap-group">
+      <h3>Speaking &amp; writing</h3>
+      <div class="snap-item">
+        <div class="name">Mythos Junior Orators</div>
+        <div class="detail">Semi-Finalist 2023, Certificate of Participation 2024</div>
+        <div class="quote">Memorising a story and telling it to the camera took a lot of takes. I did it over and over — up to 20 times — with a goal to get every word correct.</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">Speak Up! · Moo-O · Debate</div>
+        <div class="detail">Speak Up! 2024 · Moo-O 2023 · Informal school debate club Jan–Sept 2025 · Rhetoric Collective Debate workshop 2024</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">English Oral</div>
+        <div class="detail">Full marks, Primary 5 Terms 3 and 4</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">LMM Programme</div>
+        <div class="detail">Literature, Higher Chinese, accelerated Science and Maths</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">Writing competitions</div>
+        <div class="detail">Singapore Writers' Festival 2025 · Creative Writing Programme (shortlisted) · Queen's Commonwealth Essay Competition</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">National Library Board</div>
+        <div class="detail">Top 10% reader nationally · 2025</div>
+      </div>
+    </div>
+
+    <div class="snap-group">
+      <h3>STEM</h3>
+      <div class="snap-item highlight">
+        <div class="name">Science Olympiad (SPSO) — Merit</div>
+      </div>
+      <div class="snap-item highlight">
+        <div class="name">International Coding Showcase — Silver</div>
+        <div class="detail">Climate Crusaders</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">Academic profile</div>
+        <div class="detail">A1 Science consistently, Primary 5 · LMM Programme (accelerated Science and Maths)</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">Singapore Science Stories</div>
+        <div class="detail">Science podcast, creator and host · Spotify 2025–present</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">Marine Biology Quiz</div>
+        <div class="detail">Original app build · 2025</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">Robotics CCA</div>
+        <div class="detail">Primary 3 to Primary 6</div>
+        <div class="quote">When I figured out a method to win, I decided to share my knowledge with the entire club instead of keeping it to myself.</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">Coding courses</div>
+        <div class="detail">Scratch and App Inventor at Coding Lab · CodeMonkey at In3Labs Learning</div>
+      </div>
+      <div class="snap-item">
+        <div class="name">Generative AI Workshop</div>
+        <div class="detail">Prompting and ethics · 2025</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHAT'S NEXT -->
+<section class="next-section" id="next">
+  <div class="inner">
+    <h2>What's next</h2>
+    <p>The next thing I want to explore more deeply is marine biology, not just by reading books, but by learning how scientists study marine life and ecosystems in the real world. Through future seasons of <em>Singapore Science Stories</em>, I hope to turn what I learn into episodes that make science feel more interesting and accessible to other kids.</p>
+    <p>I'd like to continue improving my coding and game design skills. After building a simplified version of <em>Climate Crusaders</em>, I realised that educational games can teach people complex ideas in a more engaging way. In the future, I hope to expand the game with more detailed levels, stronger storytelling, and environmental challenges that require players to think about different solutions for different problems.</p>
+    <p>It would be awesome if I can continue creating projects that help people become curious about science and see everyday issues from a different perspective.</p>
+  </div>
+</section>
+
+<footer>
+  Lucas Cordeiro · 2026
+</footer>
+
+<script>
+  // Highlight the current section in the nav as you scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav.top a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.style.color = link.getAttribute('href') === '#' + id
+            ? 'var(--ink)'
+            : 'var(--ink-soft)';
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  // Read-it-now toggles for the inline stories
+  document.querySelectorAll('.read-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      const isOpen = target.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      btn.textContent = isOpen ? 'Close story' : 'Read it now';
+    });
+  });
+
+  // Click-to-reveal footnotes on the bamboo science claims
+  document.querySelectorAll('.claim').forEach(claim => {
+    claim.addEventListener('click', () => {
+      const note = document.getElementById(claim.dataset.note);
+      if (note) note.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
