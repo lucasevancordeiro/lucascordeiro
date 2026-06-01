@@ -256,33 +256,44 @@
     font-size: 15px;
   }
 
+  .ach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 10px;
+  }
   .ach-group {
-    margin-bottom: 22px;
+    margin-bottom: 0;
   }
   .ach-group h3 {
-    font-size: 14px;
+    font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 0.6px;
     color: var(--accent);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
     font-weight: 600;
   }
   .ach {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
   .ach-title {
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14px;
     margin-bottom: 2px;
+    line-height: 1.35;
   }
   .ach-meta {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--muted);
-    margin-bottom: 3px;
+    margin-bottom: 4px;
+    line-height: 1.4;
   }
   .ach-note {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--ink);
+    line-height: 1.45;
   }
 
   footer {
@@ -299,6 +310,10 @@
     nav ul { gap: 12px; }
     nav a { font-size: 13px; }
     main { padding: 16px 16px 36px; }
+    .ach-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+  @media (min-width: 601px) and (max-width: 760px) {
+    .ach-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -499,6 +514,8 @@
     <h2>Achievements</h2>
     <p class="section-sub">The full picture.</p>
 
+    <div class="ach-grid">
+
     <div class="ach-group">
       <h3>Leadership &amp; character</h3>
 
@@ -593,6 +610,8 @@
         <div class="ach-title">Coding courses</div>
         <div class="ach-meta">Scratch and App Inventor at Coding Lab · CodeMonkey at In3Labs Learning</div>
       </div>
+    </div>
+
     </div>
   </section>
 
