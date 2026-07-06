@@ -132,12 +132,23 @@
   }
   .hero-video {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    max-width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;   /* 16:9 */
+    height: 0;
     background: #000;
     border-radius: 4px;
-    margin-top: 18px;
+    margin: 18px 0 0;
+    overflow: hidden;
+  }
+  .hero-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
     display: block;
-    border: none;
   }
 
   .project {
@@ -324,6 +335,93 @@
   @media (min-width: 601px) and (max-width: 760px) {
     .ach-grid { grid-template-columns: 1fr 1fr; }
   }
+
+  /* ==== Print styles (for saving the site as a PDF submission file) ==== */
+  .print-only { display: none; }
+
+  @media print {
+    @page { size: A4; margin: 15mm; }
+
+    body {
+      background: var(--bg) !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      color-adjust: exact;
+    }
+
+    nav { display: none !important; }
+
+    main {
+      max-width: none !important;
+      padding: 0 !important;
+    }
+
+    section {
+      padding: 18px 0 !important;
+      page-break-inside: auto;
+    }
+    section h2 { page-break-after: avoid; }
+    .project, .writing-piece, .ach-group {
+      page-break-inside: avoid;
+    }
+
+    /* Hide live media, show a clean printable fallback in its place */
+    .hero-video,
+    .embed iframe,
+    #photos { display: none !important; }
+
+    .print-only { display: block !important; }
+    .print-only.print-hero {
+      background: #eee8dd;
+      padding: 24px 20px;
+      border-radius: 4px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin: 12px 0;
+    }
+    .print-only.print-hero .label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .print-only.print-hero .url {
+      font-family: monospace;
+      color: var(--ink);
+      word-break: break-all;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .print-only.print-media {
+      background: #f0ebdd;
+      padding: 14px 18px;
+      border-radius: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      margin: 10px 0;
+    }
+    .print-only.print-media strong { color: var(--ink); }
+
+    footer {
+      padding: 12px 0 !important;
+      font-size: 11px;
+    }
+
+    /* Print URL after external links (so panel can visit them offline) */
+    a[href^="http"]:after {
+      content: " (" attr(href) ")";
+      font-size: 0.82em;
+      color: var(--soft);
+      font-weight: normal;
+    }
+
+    /* Don't print URLs after the buttons since text is already the CTA */
+    .button:after { content: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -346,7 +444,14 @@
   <header class="hero">
     <div class="eyebrow">DSA portfolio · 2026</div>
     <h1>Hi, I'm Lucas Cordeiro.</h1>
-    <iframe class="hero-video" src="https://drive.google.com/file/d/1NuLxOkDpneyZ5T8KgQnevWJbMQzLmpWx/preview" allow="autoplay" allowfullscreen></iframe>
+    <div class="hero-video">
+      <iframe src="https://drive.google.com/file/d/1NuLxOkDpneyZ5T8KgQnevWJbMQzLmpWx/preview?autoplay=1" allow="autoplay" allowfullscreen></iframe>
+    </div>
+    <div class="print-only print-hero">
+      <span class="label">▶  60-SECOND VIDEO INTRODUCTION</span>
+      A short pitch introducing myself, my projects, and why SJI's Coding Track.<br>
+      <span class="url">https://drive.google.com/file/d/1NuLxOkDpneyZ5T8KgQnevWJbMQzLmpWx/view</span>
+    </div>
   </header>
 
   <section id="about">
@@ -377,6 +482,9 @@
       <p>Hours of debugging are part of the work. The first idea is rarely the right one. Patience is a skill.</p>
       <div class="embed">
         <iframe src="https://drive.google.com/file/d/1ICU-GVpwHil9CUtsrOP1dpgZPeP6EEOT/preview" width="100%" height="360" allow="autoplay" allowfullscreen></iframe>
+        <div class="print-only print-media">
+          ▶  <strong>Video walkthrough of Climate Crusaders gameplay.</strong> Watch at: https://drive.google.com/file/d/1ICU-GVpwHil9CUtsrOP1dpgZPeP6EEOT/view
+        </div>
       </div>
       <p class="embed-caption">A short walkthrough I recorded explaining how the game works.</p>
       <a class="button" href="https://scratch.mit.edu/projects/1256938814/" target="_blank" rel="noopener">Open Climate Crusaders on Scratch</a>
@@ -396,6 +504,9 @@
       <p>The episode with my grandmother as my guest. That was the first one I didn't fully script. We ate edible bugs together. She hated it at first, then admitted it was tasty. Her reaction made the episode funny and memorable.</p>
       <div class="embed">
         <iframe src="https://open.spotify.com/embed/episode/4BuWmVzyBKsxb7d20BZbEr?utm_source=generator" width="100%" height="232" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <div class="print-only print-media">
+          ♪  <strong>Podcast episode:</strong> my grandmother tries an edible bug. Listen at: https://open.spotify.com/episode/4BuWmVzyBKsxb7d20BZbEr
+        </div>
       </div>
       <p class="embed-caption">Press play. The episode where my grandmother tries an edible bug.</p>
       <a class="button" href="https://open.spotify.com/episode/4BuWmVzyBKsxb7d20BZbEr" target="_blank" rel="noopener">Open on Spotify</a>

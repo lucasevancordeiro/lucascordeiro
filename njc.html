@@ -132,12 +132,23 @@
   }
   .hero-video {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    max-width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;   /* 16:9 */
+    height: 0;
     background: #000;
     border-radius: 4px;
-    margin-top: 18px;
+    margin: 18px 0 0;
+    overflow: hidden;
+  }
+  .hero-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
     display: block;
-    border: none;
   }
 
   .project {
@@ -346,7 +357,9 @@
   <header class="hero">
     <div class="eyebrow">DSA portfolio · 2026</div>
     <h1>Hi, I'm Lucas Cordeiro.</h1>
-    <iframe class="hero-video" src="https://drive.google.com/file/d/11o4suGTc8nU1vDeRxWj-CDkkoArtF51l/preview" allow="autoplay" allowfullscreen></iframe>
+    <div class="hero-video">
+      <iframe src="https://drive.google.com/file/d/11o4suGTc8nU1vDeRxWj-CDkkoArtF51l/preview?autoplay=1" allow="autoplay" allowfullscreen></iframe>
+    </div>
   </header>
 
   <section id="about">
