@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DSA portfolio of Lucas Cordeiro — Primary 6, aged 12. Science, coding, writing.">
+<meta name="author" content="Lucas Cordeiro">
+<title>Lucas Cordeiro</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --ink: #1a1a1a;
+    --muted: #5c5c5c;
+    --soft: #8a8a8a;
+    --accent: #2d5016;
+    --border: #e7e2d8;
+    --card: #ffffff;
+    --maxw: 760px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+  a:hover { opacity: 0.75; }
+  p { margin: 0 0 12px; }
+
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 12px 20px;
+  }
+  nav .nav-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  nav .brand {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  nav a:hover { color: var(--ink); }
+
+  main {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+  }
+
+  section {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  h1, h2, h3, h4 {
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 0;
+  }
+  h1 { font-size: 32px; margin-bottom: 18px; }
+  h2 { font-size: 22px; margin-bottom: 6px; }
+  h3 { font-size: 19px; margin-bottom: 6px; }
+  h4 {
+    font-size: 12px;
+    color: var(--soft);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    margin: 16px 0 4px;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    margin-bottom: 22px;
+    font-size: 15px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    color: var(--soft);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 6px;
+  }
+
+  .hero {
+    padding: 28px 0 20px;
+  }
+  .hero-photo {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    background:
+      linear-gradient(135deg, #d8d0c0 0%, #b8ad95 100%)
+      center/cover no-repeat;
+    background-image: url('hero-lucas-landscape.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    margin-top: 18px;
+  }
+  .hero-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 4px;
+    margin-top: 18px;
+    display: block;
+    border: none;
+  }
+
+  .project {
+    margin-bottom: 36px;
+  }
+  .project:last-child { margin-bottom: 0; }
+
+  .embed {
+    margin: 14px 0 6px;
+  }
+  .embed iframe {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    display: block;
+  }
+  .embed-caption {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 4px 0 8px;
+  }
+
+  .button {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 9px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 6px;
+  }
+  .button:hover { opacity: 0.9; }
+
+  .bot-photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 14px 0 4px;
+  }
+  .bot-photos img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    display: block;
+  }
+
+  .photo-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .photo-strip img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 3px;
+    background: var(--border);
+    display: block;
+  }
+  @media (max-width: 600px) {
+    .photo-strip { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .writing-piece {
+    margin-bottom: 30px;
+  }
+
+  .footnote-marker {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 0.7em;
+    vertical-align: super;
+    cursor: pointer;
+    padding: 0 1px;
+    text-decoration: underline;
+    font-family: inherit;
+  }
+  .footnote-marker:hover { opacity: 0.75; }
+  .footnote {
+    background: #f1ece1;
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: var(--muted);
+    border-radius: 0 3px 3px 0;
+  }
+  .footnote.hidden { display: none; }
+
+  details.diary {
+    margin-top: 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 16px;
+    background: #fff;
+  }
+  details.diary summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--accent);
+    list-style: none;
+  }
+  details.diary summary::-webkit-details-marker { display: none; }
+  details.diary summary::after {
+    content: " →";
+  }
+  details.diary[open] summary::after {
+    content: " ↓";
+  }
+  details.diary .diary-entry {
+    margin-top: 14px;
+  }
+  details.diary .diary-entry h5 {
+    font-size: 14px;
+    margin: 18px 0 6px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  details.diary .diary-entry p {
+    font-size: 15px;
+  }
+
+  .ach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 10px;
+  }
+  .ach-group {
+    margin-bottom: 0;
+  }
+  .ach-group h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+  .ach {
+    margin-bottom: 16px;
+  }
+  .ach-title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 2px;
+    line-height: 1.35;
+  }
+  .ach-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .ach-note {
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--soft);
+    font-size: 13px;
+    padding: 24px 20px 30px;
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 26px; }
+    h2 { font-size: 20px; }
+    nav .nav-inner { gap: 10px; }
+    nav ul { gap: 12px; }
+    nav a { font-size: 13px; }
+    main { padding: 16px 16px 36px; }
+    .ach-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+  @media (min-width: 601px) and (max-width: 760px) {
+    .ach-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top">Lucas Cordeiro</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#steam-projects">STEAM Projects</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#next">What's next</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+
+  <header class="hero">
+    <div class="eyebrow">DSA portfolio · 2026</div>
+    <h1>Hi, I'm Lucas Cordeiro.</h1>
+    <iframe class="hero-video" src="https://drive.google.com/file/d/1NuLxOkDpneyZ5T8KgQnevWJbMQzLmpWx/preview" allow="autoplay" allowfullscreen></iframe>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="section-sub">A little about me.</p>
+    <p>I get curious about things that many people don't. Why it's rare to see fireflies in Singapore. Why my neighbour's plants survive when ours don't. I like thinking about these questions.</p>
+    <p>I read a lot, and I listen to lots of podcasts. My favourites are <em>Wow in the World</em> and <em>Boring History for Sleep</em>. One made me realise that science is full of things that sound crazy but actually aren't. The other one taught me that you can talk about the Roman Empire for five hours and I'd still enjoy it.</p>
+    <p>When I make things, it's because I want to find out how to do it myself. That's also why I have a graveyard of pens I've taken apart (sorry, mum). The things I end up making usually start with me trying to help. And having some fun along the way.</p>
+  </section>
+
+  <section id="steam-projects">
+    <h2>STEAM Projects</h2>
+    <p class="section-sub">Things I built and what went into them.</p>
+
+    <article class="project">
+      <div class="eyebrow">Game · Built on Scratch · International Coding Showcase, Silver · 2025</div>
+      <h3>Climate Crusaders</h3>
+      <p>A game that teaches players how different environmental problems need different scientific solutions. You pick the right solution for each climate issue and learn how Singapore handles it in real life. I built it on Scratch. Original concept. It's a topic close to my heart, as a young person who will inherit this earth.</p>
+      <h4>The plan</h4>
+      <p>Map every climate issue I wanted to cover to a real Singapore response. Build the game loop first, then the levels, then the visuals. Original code, and I created the art.</p>
+      <h4>What worked</h4>
+      <p>The core mechanic. Picking solutions and learning the reason behind each one made the game feel like a quiz that taught you something instead of testing you. When I got my friends to play, they remembered the science afterwards. That was the point.</p>
+      <h4>What failed</h4>
+      <p>The animations broke first. Sprites jittered when characters moved between zones. Movement felt sluggish even when the logic was right.</p>
+      <h4>How I fixed it</h4>
+      <p>I stripped each animation back to the simplest version that still read clearly, then layered detail on top. I rebuilt the movement system so motion stayed consistent across screens. Many rounds of trial and error.</p>
+      <h4>What I learnt</h4>
+      <p>Hours of debugging are part of the work. The first idea is rarely the right one. Patience is a skill.</p>
+      <div class="embed">
+        <iframe src="https://drive.google.com/file/d/1ICU-GVpwHil9CUtsrOP1dpgZPeP6EEOT/preview" width="100%" height="360" allow="autoplay" allowfullscreen></iframe>
+      </div>
+      <p class="embed-caption">A short walkthrough I recorded explaining how the game works.</p>
+      <a class="button" href="https://scratch.mit.edu/projects/1256938814/" target="_blank" rel="noopener">Open Climate Crusaders on Scratch</a>
+    </article>
+
+    <article class="project">
+      <div class="eyebrow">Science podcast · Creator and host · Spotify · 2025–present</div>
+      <h3>Singapore Science Stories</h3>
+      <p>I'm a huge fan of podcasts so I created this to explore science in Singapore in a way that other kids might enjoy listening to. I work on it independently: research the topic, write the scripts, record and edit the episodes on GarageBand. My parents help me upload it onto Spotify. The series explores coral reef conservation, disappearing fireflies, edible insects, and environmental technology.</p>
+      <h4>What worked</h4>
+      <p>Researching each episode taught me that good science communication is about more than sharing facts. The episodes became stronger when I focused on questions that connected science to everyday life in Singapore.</p>
+      <h4>What failed</h4>
+      <p>The mic quality was inconsistent — some parts softer or louder than others. Balancing background music with speaking audio was hard.</p>
+      <h4>How I fixed it</h4>
+      <p>I asked my dad for help with GarageBand editing. I learnt how to adjust volume levels and balance music so it supports the narration without overpowering it.</p>
+      <h4>Favourite moment</h4>
+      <p>The episode with my grandmother as my guest. That was the first one I didn't fully script. We ate edible bugs together. She hated it at first, then admitted it was tasty. Her reaction made the episode funny and memorable.</p>
+      <div class="embed">
+        <iframe src="https://open.spotify.com/embed/episode/4BuWmVzyBKsxb7d20BZbEr?utm_source=generator" width="100%" height="232" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+      <p class="embed-caption">Press play. The episode where my grandmother tries an edible bug.</p>
+      <a class="button" href="https://open.spotify.com/episode/4BuWmVzyBKsxb7d20BZbEr" target="_blank" rel="noopener">Open on Spotify</a>
+    </article>
+
+    <article class="project">
+      <div class="eyebrow">Web app · Original concept · Built with Claude · 2025–2026</div>
+      <h3>The Little Newsroom</h3>
+      <p>I needed to read more news for Oral exam prep, but The Straits Times and CNA had no kids' section and their homepages ran stories I shouldn't read. The Little Newsroom is a platform I created that features news from real sources, suitable for kids my age.</p>
+      <h4>The plan</h4>
+      <p>Real Singapore and world stories, plus science and sports. But without graphic crimes, finance news and so on. Every article links back to its source. I designed the idea, decided the filters, sketched how the page would work, then used Claude to help me code it.</p>
+      <h4>What worked</h4>
+      <p>5 RSS feeds (BBC Newsround, BBC World News, CNA, NASA, Science Daily) gave enough variety.</p>
+      <h4>What failed</h4>
+      <p>The RSS feeds didn't load at first. The early versions looked finished, but the AI had invented sample articles to fill the page. They kept reappearing. Base44 had hardcoded them into the homepage. When I removed them and the live articles finally loaded, I had to use a manual click on the "Fetch Now" button. Then the filter let through a bunch of crime news reports.</p>
+      <h4>How I fixed it</h4>
+      <p>I researched online, then asked my uncle, who works at Open Government Products. He helped me rethink the RSS pipeline. It runs cleanly now, though I still click "Fetch Now" to pull the latest stories since I'm on the free plan. Then I fixed the filter. Blocklist keywords blocked unsuitable content, and classification keywords sorted the rest into student topics.</p>
+      <h4>What I learnt</h4>
+      <p>The discussion step before prompting takes the longest. If you tell the AI "build this," it guesses and invents. I also learnt to use a second AI to check the first one's work. Keywords catch a lot, but not everything. One Spider-Man story got filed under 'Animals' because of 'spider'. So I still check every story before it goes live.</p>
+      <h4>What happened next</h4>
+      <p>When my English teacher, Mrs Tan, saw it, she asked if she could share the link with the class. I said yes, and now my classmates use it for PSLE Oral exam prep too.</p>
+      <p class="embed-caption">A live news app filtered for kids aged 10–16.</p>
+      <a class="button" href="https://kids-news-self.vercel.app/" target="_blank" rel="noopener">Open The Little Newsroom</a>
+    </article>
+
+    <article class="project">
+      <div class="eyebrow">Robotics · LEGO Mindstorms · Personal project · 2026 · Prototype</div>
+      <h3>Stair-climbing bot</h3>
+      <p>I'm building a robot that can carry things up the stairs at home. The idea came from watching my grandmother. She doesn't live with us, and bringing items up the stairs from level 1 to level 2 might be what she would appreciate help with the most.</p>
+      <h4>The plan</h4>
+      <p>A bot that grips a step, lifts itself, grips the next step, lifts again. Carries small objects in its "basket". Battery-powered. Programmed in LEGO Mindstorms.</p>
+      <h4>What worked</h4>
+      <p>The lifting motion, the gears, and the motor control. The basket can hold a small object. On a low ledge, the climb sequence runs end to end.</p>
+      <h4>What failed</h4>
+      <p>Keeping the centre of gravity steady on a small bot is hard. The gears I have are too small to lift the bot the full height of a normal step at home, which is about 15cm. When I made it taller, it got up a 10cm step, but it toppled backwards.</p>
+      <h4>How I am fixing it</h4>
+      <p>Trial and error. Test, add weight, test, take weight off the middle, test. I move the heavy parts lower and extend the base so it doesn't topple. I also find ways to minimise bricks so the gears can handle the weight.</p>
+      <h4>Where it is now</h4>
+      <p>It can climb a 5cm step on its own. It can't yet climb a full house step. Next I'm going to keep testing with a different counterweight and stronger arms. I haven't finished it. I'm working through one problem at a time.</p>
+      <div class="bot-photos">
+        <img src="bot-v1.jpg" alt="Stair-climbing bot, version 1">
+        <img src="bot-v2.jpg" alt="Stair-climbing bot, version 2">
+        <img src="bot-v3.jpg" alt="Stair-climbing bot, version 3">
+      </div>
+      <p class="embed-caption">Versions 1, 2, and 3 (left to right). Each version fixed something the last one couldn't handle.</p>
+    </article>
+
+  </section>
+
+  <section id="writing">
+    <h2>Writing</h2>
+    <p class="section-sub">Two stories. One where the science had to be right. The other is science fiction.</p>
+
+    <article class="writing-piece">
+      <h3>Diary of a Bamboo Shoot</h3>
+      <p>Before I started writing, I read about different plants and worked out which one would carry the story I wanted to tell.</p>
+      <p>Everything in the story is scientifically accurate. Bamboo grows fast — some species put on visible growth within a day<button class="footnote-marker" data-fn="fn1" aria-label="footnote 1">1</button>, which is why Xiao Jie sprouts later but is taller than Xiao Li. Mature bamboo is famous for bending in storms instead of breaking<button class="footnote-marker" data-fn="fn2" aria-label="footnote 2">2</button>, which is the lesson Xiao Li learns the night Xiao Jie snaps. The dates follow the lunar calendar in the right order: new moon, half moon, waxing gibbous, full moon<button class="footnote-marker" data-fn="fn3" aria-label="footnote 3">3</button>. The riddle Lao Zhu asks is the Riddle of the Sphinx from Greek mythology<button class="footnote-marker" data-fn="fn4" aria-label="footnote 4">4</button>, and the answer — a human — is correct because of how humans move at different stages of life: crawling, walking, then with a stick.</p>
+      <p style="color: var(--soft); font-size: 13px;">Tap any underlined number to see the science behind it.</p>
+
+      <div id="fn1" class="footnote hidden"><strong>1.</strong> Some bamboo species, like <em>Phyllostachys edulis</em> (moso bamboo), can put on up to ~91 cm of growth in a single day. The speed comes from cells dividing within already-formed internodes, not from new tissue building up slowly the way trees grow rings.</div>
+      <div id="fn2" class="footnote hidden"><strong>2.</strong> Bamboo is hollow with fibrous bundles running its length. Silica in the cell walls and the hollow culm let it bend low under wind loads and spring back. Solid-trunked trees can't flex the same way, which is why they snap in storms bamboo survives.</div>
+      <div id="fn3" class="footnote hidden"><strong>3.</strong> The lunar cycle takes about 29.5 days. The moon moves through new → waxing crescent → first quarter (half) → waxing gibbous → full → waning gibbous → third quarter → waning crescent. The diary's chosen entries follow that order from new through full correctly.</div>
+      <div id="fn4" class="footnote hidden"><strong>4.</strong> From Sophocles's <em>Oedipus Rex</em>, around 5th century BCE. The Sphinx of Thebes posed the riddle to travellers; failure meant death. Oedipus's answer — a human, who crawls as an infant, walks as an adult, and uses a cane in old age — caused the Sphinx to destroy itself.</div>
+
+      <details class="diary">
+        <summary>Read it now</summary>
+        <div class="diary-entry">
+          <h5>The day of the first new moon of the year</h5>
+          <p>Dear Diary,</p>
+          <p>Hello! I am Xiao Li. I live in China and my favourite hobby is talking to the oldest bamboo plant in the grove, Lao Zhu — which translates to Old Stem. He stood tall at the edge of the grove, its stem still thick and strong despite withstanding countless seasons. Everyone looked up to him for his wisdom and wits.</p>
+          <p>Today, he gave me a riddle and even though I solved all of his other riddles, I can't solve this one. You can help me solve it, can't you? What walks on four legs in the morning, two legs in the afternoon and three legs in the evening? I can't seem to solve it because I don't know which animal has three legs! At least, I think it is an animal because all the animals I've seen have legs! If you have any ideas, maybe you can write back? …somehow.</p>
+          <p>Your new friend,<br>Xiao Li</p>
+
+          <h5>The day of the first half moon of the year</h5>
+          <p>Dear Diary,</p>
+          <p>Today, I had the most splendiferous day. A group of giants with two legs came and watered me and all the other plants! I wonder why they had come. They also gave water to Xiao Jie, which only sprouted up about a week ago. Despite that, he is much taller than me. Every time I see him, I feel so ashamed because even though bamboo grows very fast, I'm still very much shorter than him. Why is the world so unfair? And I haven't even started on the name calling! He calls me names like Little Weed, Weak Stem, and even says that I am a waste of space, sunlight and water! How infuriating! Well anyway, dear Diary, Xiao Jie aside, today was awesome. Good night!</p>
+          <p>Your friend,<br>Xiao Li</p>
+
+          <h5>The day of the first waxing gibbous of the year</h5>
+          <p>Dear Diary,</p>
+          <p>I have been trying to grow taller, but nothing much has changed. I went to Lao Zhu for advice, but he just chuckled and told me that taller does not mean better, and better doesn't mean taller. When I asked him what was better, he said, "Even the tallest plant snaps under weight!" Always speaking in riddles, Lao Zhu! I've been thinking, though, maybe my stem is a bit strained, and that Xiao Jie's stem is under a lot of strain too, so maybe it is for the better that I am so short. Tall trees sway so crazily in the wind it scares me.</p>
+          <p>Your blissfully short friend,<br>Xiao Li</p>
+
+          <h5>The day of the first full moon of the year</h5>
+          <p>Dear Diary,</p>
+          <p>Today was the scariest day of my life. I was photosynthesising as normal when something hit. I can still vividly remember the deafening sound of thunder and the pale colour of the streaks of lightning. The wind seemed to whistle an ominous song in my roots as the raindrops darted down in a relentless torrent. I must've turned as white as a panda's fur. Some of my leaves snapped off as I struggled to stand straight when I heard a soft, gentle voice. "Relax, don't fight it," it said. Deciding I had nothing to lose, I obeyed. As I let the wind rush on me, I slowly bent backwards.</p>
+          <p>I was one of the lucky ones though. Xiao Jie — he snapped in half. His stem must have been under unbearable strain. The last thing I remember was Xiao Jie fighting the forces of the wind and struggling to stand as tall as he could until his stem just snapped. I am still recovering from the shock. Six other plants suffered the same fate. Their funeral is tomorrow. I know now: bending is better than breaking. Those who fight against our mother — Mother Nature — shall be punished. That is her rule.</p>
+          <p>Your mercifully lucky friend,<br>Xiao Li</p>
+
+          <h5>The day of the fifth full moon of the year</h5>
+          <p>Dear Diary,</p>
+          <p>It feels like forever since I last talked to you. Lao Zhu is still alive and talking in riddles. The giants are still coming. My only explanation is that there is now a drought and they are taking care of us.</p>
+          <p>Oh! Also, I am no longer the shortest shoot in the grove. Two days ago, a tiny shoot sprouted and we all call him Xiao Xing Cun, Little Survivor. A few days ago, I was poring over my old entries and found that riddle. Remember? What walks on four legs in the morning, two legs in the afternoon and three legs in the evening? That one. When I showed it to Lao Zhu, he told me the answer: a human! You may be confused, like I was, so I dug a little deeper and realised that those giants that gave us water were humans! Why? Well, at the start of their lives, they crawl on all fours. When they grow up, they learn to walk on two legs, and when they are old, they use something called a walking stick. Well, that is the third leg.</p>
+          <p>Lao Zhu then gave me something else to think about. He said that life is a circle. And now, looking back on the last — well, I can't remember how long, I realise how true it is. Just as I once looked up to others, now Xiao Xing Cun looks up to me.</p>
+          <p>Your much taller friend,<br>Xiao Li</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="writing-piece">
+      <h3>PSLE 2225: Snippets of the Future</h3>
+      <p class="ach-meta">Contributor, Singapore Writers' Festival 2025. A short piece imagining what Singapore's most stressful exam looks like two centuries from now.</p>
+      <details class="diary">
+        <summary>Read it now</summary>
+        <div class="diary-entry">
+          <p>By 2225, PSLE is gone — replaced by the Planetary Survival Leadership Exam, where 12-year-olds lead teams through simulated crises: asteroid strikes, rising sea levels, or bubble tea shortage.</p>
+          <p>Morning assembly still happens under the Singapore sun (because tradition), though climate domes keep out the 45°C heat while rotating through four seasons for "training". Students attend the Living Campus, a sentient school where classrooms morph into holographic kampongs, galaxies or labs, while animals roam free as student companions.</p>
+          <p>Uniforms remain (because heritage!), now self-cleaning and biometric. In the canteen, chicken wings still sell out first, even with mind-preorders. Some things never change.</p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <section id="photos">
+    <h2>In photos</h2>
+    <p class="section-sub">A bit of life outside the screen.</p>
+    <div class="photo-strip">
+      <img src="photo-1.jpg" alt="">
+      <img src="photo-2.jpg" alt="">
+      <img src="photo-3.jpg" alt="">
+      <img src="photo-4.jpg" alt="">
+      <img src="photo-5.jpg" alt="">
+    </div>
+  </section>
+
+  <section id="achievements">
+    <h2>Achievements</h2>
+    <p class="section-sub">The full picture.</p>
+
+    <div class="ach-grid">
+
+    <div class="ach-group">
+      <h3>Leadership &amp; character</h3>
+
+      <div class="ach">
+        <div class="ach-title">Choir</div>
+        <div class="ach-meta">2022–2026, including Papal Mass 2024</div>
+        <div class="ach-note">I joined when it was a small morning gathering. I encouraged my friends to join and asked the principal to come to a rehearsal. I watched it grow into a full CCA.</div>
+      </div>
+
+      <div class="ach">
+        <div class="ach-title">Montfortian Adventure Retreat</div>
+        <div class="ach-meta">Youths In Action · November 2025</div>
+        <div class="ach-note">I learnt what it truly meant to be a leader: to lead yourself before you lead others.</div>
+      </div>
+
+      <div class="ach">
+        <div class="ach-title">Kali Majapahit</div>
+        <div class="ach-meta">Senior red belt · Since kindergarten · Now guides younger peers informally</div>
+        <div class="ach-note">I figured out how to channel my energy into what required my energy most.</div>
+      </div>
+
+    </div>
+
+    <div class="ach-group">
+      <h3>Speaking &amp; writing</h3>
+
+      <div class="ach">
+        <div class="ach-title">Mythos Junior Orators</div>
+        <div class="ach-meta">Semi-Finalist 2023 · Certificate of Participation 2024</div>
+        <div class="ach-note">Memorising a story and telling it to camera took a lot of takes. I did it over and over (up to 20 times) to get every word correct.</div>
+      </div>
+
+      <div class="ach">
+        <div class="ach-title">Speak Up! · Moo-O · Debate</div>
+        <div class="ach-meta">Speak Up! Finalist 2024 · Moo-O Merit 2023 · Rhetoric Collective Debate workshop 2024 · Informal school speaking platform, One Minute of Fame, 2025–2026</div>
+      </div>
+
+      <div class="ach">
+        <div class="ach-title">English Oral</div>
+        <div class="ach-meta">Full marks, Primary 5 Terms 3 and 4</div>
+      </div>
+
+      <div class="ach">
+        <div class="ach-title">LMM Programme</div>
+        <div class="ach-note"><a href="https://www.stgabrielspri.moe.edu.sg/signature-programmes/louis-marie-de-montfort/lmm/" target="_blank" rel="noopener">Louis Marie de Montfort (LMM)</a> is a dedicated talent development initiative to support high-ability learners in SGPS.</div>
+        <div class="ach-meta">Literature, Higher Chinese, accelerated Science and Maths</div>
+      </div>
+
+      <div class="ach">
+        <div class="ach-title">Writing</div>
+        <div class="ach-meta">Contributor, Singapore Writers' Festival 2025</div>
+      </div>
+
+      <div class="ach">
+        <div class="ach-title">National Library Board</div>
+        <div class="ach-meta">Top 10% reader nationally · 2025</div>
+      </div>
+    </div>
+
+    <div class="ach-group">
+      <h3>STEM</h3>
+
+      <div class="ach">
+        <div class="ach-title">Singapore Primary Science Olympiad</div>
+        <div class="ach-meta">Merit · 2025</div>
+        <div class="ach-note">Top 10% in Science and selected to participate.</div>
+      </div>
+
+      <div class="ach">
+        <div class="ach-title">International Coding Showcase</div>
+        <div class="ach-meta">Silver · 2025/26</div>
+      </div>
+
+      <div class="ach">
+        <div class="ach-title">Robotics CCA</div>
+        <div class="ach-meta">Primary 3 to Primary 6</div>
+      </div>
+
+      <div class="ach">
+        <div class="ach-title">Coding courses</div>
+        <div class="ach-meta">30+ hours at Coding Lab · Dec 2022 (Scratch P101) through Dec 2025 (App Inventor P201/P202) · CodeMonkey at In3Labs Learning</div>
+        <div class="ach-note">I built two original projects at Coding Lab: a Marine Biology Quiz mobile app and a Percy Jackson character animation. This was the foundation for Climate Crusaders.</div>
+      </div>
+    </div>
+
+    </div>
+  </section>
+
+  <section id="next">
+    <h2>What's next</h2>
+    <p>The next thing I want to explore more deeply is marine biology. Through future seasons of <em>Singapore Science Stories</em>, I hope to turn what I learn into episodes that make science feel more interesting for kids (and grown-ups!).</p>
+    <p>I'd like to continue improving my coding and game design skills. After building a simplified version of <em>Climate Crusaders</em>, I realised that educational games can get people thinking about science issues. In the future, I hope to expand the game.</p>
+  </section>
+
+</main>
+
+<footer>
+  Lucas Cordeiro · 2026
+</footer>
+
+<script>
+  document.querySelectorAll('.footnote-marker').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-fn');
+      var fn = document.getElementById(id);
+      if (fn) fn.classList.toggle('hidden');
+    });
+  });
+</script>
+
+</body>
+</html>
