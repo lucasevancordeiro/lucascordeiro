@@ -393,19 +393,21 @@
     </article>
 
     <article class="project">
-      <div class="eyebrow">Web app · AI-assisted build · Personal project · 2025–2026</div>
+      <div class="eyebrow">Web app · Original concept · Built with Claude · 2025–2026</div>
       <h3>The Little Newsroom</h3>
       <p>I needed to read more news for Oral exam prep, but The Straits Times and CNA had no kids' section and their homepages ran stories I shouldn't read. The Little Newsroom is a platform I created that features news from real sources, suitable for kids my age.</p>
       <h4>The plan</h4>
-      <p>Real Singapore and world stories, plus science. But without graphic crimes, finance news and so on. Every article links back to its source. I designed the idea, decided the filters, sketched how the page would work, then used Claude and Base44 to build it.</p>
+      <p>Real Singapore and world stories, plus science and sports. But without graphic crimes, finance news and so on. Every article links back to its source. I designed the idea, decided the filters, sketched how the page would work, then used Claude to help me code it.</p>
       <h4>What worked</h4>
       <p>5 RSS feeds (BBC Newsround, BBC World News, CNA, NASA, Science Daily) gave enough variety.</p>
       <h4>What failed</h4>
       <p>The RSS feeds didn't load at first. The early versions looked finished, but the AI had invented sample articles to fill the page. They kept reappearing. Base44 had hardcoded them into the homepage. When I removed them and the live articles finally loaded, I had to use a manual click on the "Fetch Now" button. Then the filter let through a bunch of crime news reports.</p>
       <h4>How I fixed it</h4>
-      <p>I researched online, then asked my uncle, who works at Open Government Products. He showed me how to set up cron jobs so the site pulls new articles on its own. Then I fixed the filter. Blocklist keywords blocked unsuitable content, and classification keywords sorted the rest into student topics.</p>
+      <p>I researched online, then asked my uncle, who works at Open Government Products. He helped me rethink the RSS pipeline. It runs cleanly now, though I still click "Fetch Now" to pull the latest stories since I'm on the free plan. Then I fixed the filter. Blocklist keywords blocked unsuitable content, and classification keywords sorted the rest into student topics.</p>
       <h4>What I learnt</h4>
-      <p>The discussion step before prompting takes the longest. If you tell the AI "build this," it guesses and invents. I also learnt to use a second AI to check the first one's work.</p>
+      <p>The discussion step before prompting takes the longest. If you tell the AI "build this," it guesses and invents. I also learnt to use a second AI to check the first one's work. Keywords catch a lot, but not everything. One Spider-Man story got filed under 'Animals' because of 'spider'. So I still check every story before it goes live.</p>
+      <h4>What happened next</h4>
+      <p>When my English teacher, Mrs Tan, saw it, she asked if she could share the link with the class. I said yes, and now my classmates use it for PSLE Oral exam prep too.</p>
       <p class="embed-caption">A live news app filtered for kids aged 10–16.</p>
       <a class="button" href="https://kids-news-self.vercel.app/" target="_blank" rel="noopener">Open The Little Newsroom</a>
     </article>
@@ -436,7 +438,7 @@
 
   <section id="writing">
     <h2>Writing</h2>
-    <p class="section-sub">Stories where the science had to be right.</p>
+    <p class="section-sub">Two stories. One where the science had to be right. The other is science fiction.</p>
 
     <article class="writing-piece">
       <h3>Diary of a Bamboo Shoot</h3>
@@ -528,7 +530,7 @@
       <div class="ach">
         <div class="ach-title">Montfortian Adventure Retreat</div>
         <div class="ach-meta">Youths In Action · November 2025</div>
-        <div class="ach-note">I learnt what it truly meant to be a leader — to lead yourself before you lead others.</div>
+        <div class="ach-note">I learnt what it truly meant to be a leader: to lead yourself before you lead others.</div>
       </div>
 
       <div class="ach">
@@ -545,12 +547,12 @@
       <div class="ach">
         <div class="ach-title">Mythos Junior Orators</div>
         <div class="ach-meta">Semi-Finalist 2023 · Certificate of Participation 2024</div>
-        <div class="ach-note">Memorising a story and telling it to camera took a lot of takes. I did it over and over — up to 20 times — to get every word correct.</div>
+        <div class="ach-note">Memorising a story and telling it to camera took a lot of takes. I did it over and over (up to 20 times) to get every word correct.</div>
       </div>
 
       <div class="ach">
         <div class="ach-title">Speak Up! · Moo-O · Debate</div>
-        <div class="ach-meta">Speak Up! Finalist 2024 · Moo-O Merit 2023 · Rhetoric Collective Debate workshop 2024 · Informal school debate club Jan–Sept 2025</div>
+        <div class="ach-meta">Speak Up! Finalist 2024 · Moo-O Merit 2023 · Rhetoric Collective Debate workshop 2024 · Informal school speaking platform, One Minute of Fame, 2025–2026</div>
       </div>
 
       <div class="ach">
@@ -560,6 +562,7 @@
 
       <div class="ach">
         <div class="ach-title">LMM Programme</div>
+        <div class="ach-note"><a href="https://www.stgabrielspri.moe.edu.sg/signature-programmes/louis-marie-de-montfort/lmm/" target="_blank" rel="noopener">Louis Marie de Montfort (LMM)</a> is a dedicated talent development initiative to support high-ability learners in SGPS.</div>
         <div class="ach-meta">Literature, Higher Chinese, accelerated Science and Maths</div>
       </div>
 
@@ -580,6 +583,7 @@
       <div class="ach">
         <div class="ach-title">Singapore Primary Science Olympiad</div>
         <div class="ach-meta">Merit · 2025</div>
+        <div class="ach-note">Top 10% in Science and selected to participate.</div>
       </div>
 
       <div class="ach">
